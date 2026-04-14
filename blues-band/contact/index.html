@@ -101,28 +101,14 @@
             Fill out the form and we&rsquo;ll get back to you as soon as we can.
           </p>
 
-          <!--
-          ════════════════════════════════════════════════════════════════
-          CONTACT FORM — BACKEND PENDING SELECTION
-          ════════════════════════════════════════════════════════════════
-          To wire this up, replace the action attribute with your chosen
-          form service endpoint. Options presented separately to owner.
-
-          Formspree:   action="https://formspree.io/f/YOUR_FORM_ID"
-          Web3Forms:   action="https://api.web3forms.com/submit"
-                       + add: <input type="hidden" name="access_key" value="YOUR_KEY">
-          FormSubmit:  action="https://formsubmit.co/YOUR_EMAIL"
-                       + add: <input type="hidden" name="_captcha" value="false">
-          ════════════════════════════════════════════════════════════════
-          -->
           <form
             id="contact-form"
-            action="#"
+            action="https://api.web3forms.com/submit"
             method="POST"
           >
-            <!-- Hidden fields for form services that need them -->
-            <!-- <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY"> -->
-            <!-- Honeypot spam trap (supported by most services) -->
+            <input type="hidden" name="access_key" value="0252a23f-7bb0-47f8-876b-3c19e2bbaa32">
+            <input type="hidden" name="_subject" value="New Message — Double-Edge Blues Band">
+            <!-- Honeypot spam trap -->
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
             <div class="form-grid" style="margin-bottom:1.2rem;">
@@ -234,13 +220,33 @@
   </footer>
 
   <script>
-    // Once a form backend is wired up, this shows the success state
-    // without a page redirect. Remove if using a redirect-based service.
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      // Remove this preventDefault once a real endpoint is in the action attribute
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
       e.preventDefault();
-      document.getElementById('contact-form').style.display = 'none';
-      document.getElementById('form-success').style.display = 'block';
+      const form = e.target;
+      const btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      try {
+        const data = new FormData(form);
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: data
+        });
+        const json = await res.json();
+        if (json.success) {
+          form.style.display = 'none';
+          document.getElementById('form-success').style.display = 'block';
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Send Message';
+          alert('Something went wrong. Please try again or call us at 978-852-0188.');
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Send Message';
+        alert('Could not send the message. Please check your connection and try again.');
+      }
     });
   </script>
 
