@@ -196,7 +196,7 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: flex-end;
   overflow: hidden;
-  padding-top: 64px; /* clear the fixed nav */
+  margin-top: 64px; /* push section below fixed nav */
 }
 .page-hero .hero-bg { background-attachment: scroll; }
 .page-hero-content {
