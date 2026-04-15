@@ -222,7 +222,18 @@
     }
 
     /* ─── STUDIO SECTION ────────────────────────────────────── */
-    #studio { background: #000; }
+    #studio .hero-bg {
+      background-image: url('wp-content/uploads/2inchtape.jpeg');
+      background-position: center center;
+    }
+    #studio .hero-overlay {
+      background:
+        linear-gradient(to bottom,
+          rgba(10,10,20,0.72) 0%,
+          rgba(10,10,20,0.45) 45%,
+          rgba(10,10,20,0.85) 100%),
+        linear-gradient(135deg, rgba(45,20,0,0.55) 0%, transparent 65%);
+    }
     #studio .hero-eyebrow { color: var(--amber); }
     #studio .hero-title .line2 { color: var(--amber); }
 
@@ -308,6 +319,9 @@
 
   <!-- RECORDING STUDIO -->
   <section class="hero" id="studio">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+
     <div class="hero-content">
       <span class="coming-soon-badge">Expanding Soon</span>
       <p class="hero-eyebrow">Haverhill, MA</p>
