@@ -221,6 +221,41 @@
       filter: drop-shadow(0 0 20px rgba(0,200,224,0.3));
     }
 
+    /* ─── TEST SECTION ──────────────────────────────────────── */
+    .test-section {
+      background: var(--mid);
+      padding: 6rem 2.5rem;
+      text-align: center;
+    }
+    .test-section-inner {
+      max-width: 740px;
+      margin: 0 auto;
+    }
+    .test-section .section-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.8rem;
+    }
+    .test-section h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .test-section p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(242, 242, 242, 0.82);
+    }
+
     /* ─── STUDIO SECTION ────────────────────────────────────── */
     #studio .hero-bg {
       background-image: url('wp-content/uploads/2inchtape.jpeg');
@@ -267,6 +302,7 @@
       .nav-links { gap: 1.5rem; }
       .hero-bg { background-attachment: scroll; }
       .hero-logo { width: 88px; height: 88px; }
+      .test-section { padding: 4rem 1.25rem; }
     }
   </style>
 </head>
@@ -316,6 +352,15 @@
       </svg>
     </div>
   </section>
+
+  <!-- TEST SECTION -->
+  <div class="test-section">
+    <div class="test-section-inner">
+      <p class="section-label">Test</p>
+      <h2>Test</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+  </div>
 
   <!-- RECORDING STUDIO -->
   <section class="hero" id="studio">
